@@ -29,7 +29,7 @@
                 [{options,
                      [{histogram_module,exometer_slot_slide},
                       {keep_high,500}]}]}]}]},
-     {pkg_name,"riak_core_ng"},
-     {maintainers,["basho","Heinz N. Gies"]},
+     {pkg_name,"riak_core_ng_up"},
+     {maintainers,["Merigo","Chris Jimison"]},
      {licenses,["Apache"]},
-     {links,[{"Github","https://github.com/project-fifo/riak_core"}]}]}.
+     {links,[{"Github","https://github.com/cjimison/riak_core"}]}]}.
