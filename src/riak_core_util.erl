@@ -137,7 +137,7 @@ rfc1123_to_now(String) when is_list(String) ->
 %%      to the new directory.
 make_tmp_dir() ->
     TmpId = io_lib:format("riptemp.~p",
-                          [erlang:phash2({random:uniform(),self()})]),
+                          [erlang:phash2({rand:uniform(),self()})]),
     TempDir = filename:join("/tmp", TmpId),
     case filelib:is_dir(TempDir) of
         true -> make_tmp_dir();
@@ -235,11 +235,11 @@ md5(Bin) ->
 seed() ->
     %% We need to do this since passing in a seed that isn't
     %% properly formated causes horrors!
-    OldSeed = random:seed(),
-    Result = random:seed({erlang:phash2([node()]),
+    OldSeed = rand:seed(),
+    Result = rand:seed({erlang:phash2([node()]),
                           erlang:monotonic_time(),
                           erlang:unique_integer()}),
-    random:seed(OldSeed),
+    rand:seed(OldSeed),
     Result.
 
 %% @spec unique_id_62() -> string()
@@ -628,7 +628,7 @@ orddict_delta(A, B) ->
 
 shuffle(L) ->
     N = 134217727, %% Largest small integer on 32-bit Erlang
-    L2 = [{random:uniform(N), E} || E <- L],
+    L2 = [{rand:uniform(N), E} || E <- L],
     L3 = [E || {_, E} <- lists:sort(L2)],
     L3.
 
